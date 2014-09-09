@@ -59,7 +59,7 @@ class Empire
       sql = "SELECT * FROM #{service}.#{table} LIMIT 5"
       puts "empire.query '#{sql}'"
       query(sql) do |row|
-        print_row(row, 75)
+        print_row(row)
       end
     rescue Exception => e
       puts "Problem with #{service}.#{table}"
@@ -77,21 +77,21 @@ class Empire
     puts "empire.materialize_view('view_name', 'SELECT * FROM #{service}.#{table} LIMIT 5')"
     materialize_view('view_name', "SELECT * FROM #{service}.#{table} LIMIT 5")
 
-    puts "until empire.view_ready? 'view_name'\n  sleep 0.1\nend"
+    puts "until empire.view_ready? 'view_name'\n  sleep 0.01\nend"
     until view_ready? 'view_name'
       sleep 0.01
     end
 
     puts "empire.query 'SELECT * FROM view_name'"
     query('SELECT * FROM view_name') do |row|
-      print_row(row, 75)
+      print_row(row)
     end
 
     puts "empire.drop_view 'view_name'"
     drop_view 'view_name'
   end
 
-  def print_row(row, max_length)
+  def print_row(row, max_length = 70)
       fragment = row.slice(0, max_length)
       if fragment.length == max_length
         fragment = fragment + "..."

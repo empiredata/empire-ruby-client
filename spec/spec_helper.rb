@@ -8,7 +8,7 @@ class Empire
   include WebMock::API
 
   def setup_mocks
-    stub_request(:post, @base_url + "session/create?enduser=#{@end_user}").
+    stub_request(:post, @base_url + "session/create?enduser=#{@enduser}").
       to_return(:body => '{"status": "OK", "sessionkey": "TESTSESSION"}', :status => 200)
 
     stub_request(:post, @base_url + "services/salesforce/connect").

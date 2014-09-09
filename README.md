@@ -1,48 +1,13 @@
-Empire client for Ruby
-======================
+Empire API Ruby client
+========================
 
-Bulding gem
-------------
+[Empire](http://empiredata.co) is an API for accessing enterprise
+SaaS services such as Salesforce, Zendesk, Google Apps, etc. It
+provides a uniform, database-like interface to every service that
+it supports. Empire makes it easy to integrate data from multiple
+enterprise services into your own enterprise app.
 
-Client requires Ruby 1.9+.
+Installation and Usage
+----------------------
 
-```sh
-gem build ./empire-client.gemspec
-gem install ./empire-client-0.3.gem
-```
-
-Usage
------
-
-In `irb`, type:
-
-```ruby
-require 'empire'
-
-empire = Empire.new 'YOUR_APP_KEY', secrets_yaml: 'empire_service_secrets.yaml'
-
-empire.walkthrough
-```
-
-or to quickly test it's working:
-
-```sh
-ruby ./example.rb YOUR_APP_KEY empire_service_secrets.yaml
-```
-
-where `empire_service_secrets.yaml` was downloaded from [https://login.empiredata.co](https://login.empiredata.co)
-
-Testing
--------
-
-First install the development dependencies:
-
-```sh
-gem install rspec webmock
-```
-
-You can run the test suite with RSpec:
-
-```sh
-rspec
-```
+Please see the [Ruby client documentation](http://empiredata.co/doc/ruby/).

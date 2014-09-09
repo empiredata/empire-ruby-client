@@ -5,7 +5,7 @@ require_relative '../lib/empire'
 
 describe Empire do
   before(:each) do
-    @empire = Empire.new 'MOCK_USER', end_user: 'MOCK_ENDUSER'
+    @empire = Empire.new 'MOCK_USER', enduser: 'MOCK_ENDUSER'
     @empire.setup_mocks
   end
 
@@ -42,16 +42,16 @@ describe Empire do
     it "doesn't describe a table without a service" do
       expect {
         table_data = @empire.describe nil, 'table1'
-      }.to raise_error(RuntimeError, 'Service must be specified if table is specified')
+      }.to raise_error(Empire::MissingServiceError)
     end
 
     it "handles failure gracefully" do
       stub_request(:get, @empire.base_url + "services/salesforce/table1").
-        to_return(:body => '{"status": "Something is broken"}', :status => 500)
+        to_return(:body => '{"error": "Something is broken"}', :status => 500)
 
       expect {
         table_data = @empire.describe 'salesforce', 'table1'
-      }.to raise_error(RuntimeError, "Internal Server Error")
+      }.to raise_error(Empire::APIError, "Something is broken")
     end
   end
 

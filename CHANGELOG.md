@@ -1,3 +1,15 @@
+## 0.3.1
+
+Breaking changes:
+
+  - RubyGem package is now called `empire-client`. The module is still
+  called `empire`.
+  - `end_user` optional parameter renamed to `enduser`.
+
+Improvements:
+
+  - More detailed error handling
+
 ## 0.3
 
 Initial port from Python client.
