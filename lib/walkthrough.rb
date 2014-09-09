@@ -69,8 +69,8 @@ class Empire
   end
 
   def walkthrough_materialized_view(service, table)
-    unless @end_user
-      puts "Please specify an end_user parameter when instantiating the client, so that you can try materialized views"
+    unless @enduser
+      puts "Please specify an enduser parameter when instantiating the client, so that you can try materialized views"
       return
     end
 

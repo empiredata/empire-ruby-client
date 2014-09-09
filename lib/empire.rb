@@ -28,13 +28,9 @@ class Empire
     protocol = api_server.start_with?('localhost') ? 'http' : 'https'
     @base_url = "#{protocol}://#{api_server}/empire/"
 
+    @service_secrets = nil
     if opts[:secrets_yaml]
-      service_secrets = YAML.load_file opts[:secrets_yaml]
-
-      @secrets = {}
-      @service_secrets[service]['option'].each{|k, v| 
-        secrets[k] = v['value']
-      }
+      @service_secrets = YAML.load_file opts[:secrets_yaml]
     end
   end
 
@@ -43,9 +39,18 @@ class Empire
   # secrets: hash with service secrets (optional if the Empire instance was initialized with a secrets_yaml)
   def connect(service, secrets = nil)
     path = "services/#{service}/connect"
+
     unless secrets
-      raise Empire::MissingSecretsError.new
+      unless @service_secrets
+        raise Empire::MissingSecretsError.new
+      end
+
+      secrets = {}
+      @service_secrets[service]['option'].each{|k, v| 
+        secrets[k] = v['value']
+      }
     end
+
     request path, :post, {}, secrets
   end
 

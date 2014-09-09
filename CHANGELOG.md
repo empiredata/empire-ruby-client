@@ -1,3 +1,10 @@
+## 0.3.2
+
+Bugfixes:
+
+  - Fixed `connect` when secrets are provided via YAML
+  - Correctly demonstrating materialized views in `walkthrough` 
+
 ## 0.3.1
 
 Breaking changes:

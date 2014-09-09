@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'empire-client'
-  s.version     = '0.3.1'
+  s.version     = '0.3.2'
   s.date        = '2014-09-08'
   s.summary     = 'Ruby client for the Empire API'
   s.description = 'Ruby client for the Empire API. Empire is an API for accessing enterprise SaaS services such as Salesforce, Zendesk, Google Apps, etc. Empire provides a uniform, database-like interface to every service that it supports. Empire makes it easy to integrate data from multiple enterprise services into your own enterprise app.'
