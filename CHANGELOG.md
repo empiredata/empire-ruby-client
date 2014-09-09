@@ -1,6 +1,12 @@
+## 0.3.3
+
+Breaking changes:
+
+ - RubyGem package is now called `empire`.
+
 ## 0.3.2
 
-Bugfixes:
+Fixes:
 
   - Fixed `connect` when secrets are provided via YAML
   - Correctly demonstrating materialized views in `walkthrough` 
