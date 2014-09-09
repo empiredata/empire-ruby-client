@@ -1,3 +1,9 @@
+## 0.3.4
+
+Breaking changes:
+
+ - Renamed `empire-client.gemspec` to `empire.gemspec`.
+
 ## 0.3.3
 
 Breaking changes:
